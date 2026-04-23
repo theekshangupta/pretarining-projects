@@ -17,6 +17,7 @@ create table students (
     enrollment_date date
 );
 
+
 create table issuedbooks (
     issued_id int primary key auto_increment,
     book_id int,
@@ -45,13 +46,35 @@ INSERT INTO issuedbooks (book_id, student_id, issue_date, return_date) VALUES
 (2, 2, '2024-03-10', '2024-03-15'),  
 (3, 3, '2023-01-01', NULL),
 (4, 4, '2023-10-01', '2023-10-15'),
-(1, 5, '2024-02-20', NULL)
+(1, 5, '2024-02-20', NULL),
 (2, 3, '2024-03-01', NULL);          
 
+ALTER TABLE students
+ADD last_active DATE;
 
+UPDATE students SET last_active = '2020-03-15' WHERE stu_id = 1;
+UPDATE students SET last_active = '2024-03-15' WHERE stu_id = 2;
+UPDATE students SET last_active = CURRENT_DATE WHERE stu_id = 3;
+UPDATE students SET last_active = '2023-10-15' WHERE stu_id = 4;
+UPDATE students SET last_active = CURRENT_DATE WHERE stu_id = 5;
 SELECT * FROM books;
 SELECT * FROM students;
 SELECT * FROM issuedbooks;
+
+INSERT INTO books (title, author, published_date, pages, category) VALUES
+('Data Structures', 'Mark Allen', '2016-07-12', 420, 'Programming'),
+('World Geography', 'John Smith', '2012-03-18', 380, 'Geography'),
+('Physics Fundamentals', 'Albert Newton', '2019-08-25', 450, 'Science');
+
+INSERT INTO students (name, email, enrollment_date, last_active) VALUES
+('Arjun', 'arjun@gmail.com', '2021-07-10', CURRENT_DATE),
+('Meena', 'meena@gmail.com', '2020-05-12', '2023-05-20'),
+('Vikram', 'vikram@gmail.com', '2022-11-20', CURRENT_DATE);
+
+INSERT INTO issuedbooks (book_id, student_id, issue_date, return_date) VALUES
+(5, 6, '2024-01-10', NULL),
+(6, 7, '2023-05-01', '2023-05-20'),
+(7, 8, '2022-02-15', NULL);
 
 SELECT *
 FROM issuedbooks
@@ -65,5 +88,26 @@ GROUP BY b.category
 ORDER BY total_issued DESC;
 
 
-DELETE FROM Students
-WHERE last_active < CURRENT_DATE - INTERVAL 3 YEAR;
+DELETE FROM students
+WHERE last_active IS NOT NULL
+AND last_active < CURRENT_DATE - INTERVAL 3 YEAR;
+
+UPDATE students s
+SET last_active = (
+    CASE
+        WHEN EXISTS (
+            SELECT 1 
+            FROM issuedbooks ib 
+            WHERE ib.student_id = s.stu_id 
+            AND ib.return_date IS NULL
+        )
+        THEN CURRENT_DATE
+
+        ELSE COALESCE(
+            (SELECT MAX(ib.return_date)
+             FROM issuedbooks ib
+             WHERE ib.student_id = s.stu_id),
+            s.enrollment_date
+        )
+    END
+);

@@ -1,15 +1,16 @@
+
 import java.util.Scanner;
 
 public class PasswordValidator {
 
     public static boolean isValid(String password) {
-        if (password.length() < 8) {
-            System.out.println("Password too short (min 8 characters)");
-            return false;
-        }
-
         boolean hasUpper = false;
         boolean hasDigit = false;
+        boolean hasSpecial = false;
+
+        if (password.length() < 8) {
+            System.out.println("Password too short (min 8 characters)");
+        }
 
         for (int i = 0; i < password.length(); i++) {
             char ch = password.charAt(i);
@@ -20,19 +21,22 @@ public class PasswordValidator {
             if (Character.isDigit(ch)) {
                 hasDigit = true;
             }
+            if (!Character.isLetterOrDigit(ch)) {
+                hasSpecial = true;
+            }
         }
 
         if (!hasUpper) {
             System.out.println("Missing uppercase letter");
-            return false;
         }
-
         if (!hasDigit) {
             System.out.println("Missing digit");
-            return false;
+        }
+        if (!hasSpecial) {
+            System.out.println("Missing special character");
         }
 
-        return true;
+        return password.length() >= 8 && hasUpper && hasDigit && hasSpecial;
     }
 
     public static void main(String[] args) {
