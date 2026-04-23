@@ -1,38 +1,53 @@
-# Java Project – Password Validator (SafeLog)
+Java Project - Password Validator (SafeLog)
 
-##  Description
+#Description
 
-This project implements a password validation system that checks whether a given password satisfies specific security requirements.
+This project includes a password validator that makes sure users generate strong passwords according to certain rules.
 
-##  Objective
+#Objective
 
-To ensure strong password creation by validating:
+To validate passwords using security guidelines and give relevant feedback about their improvements.
 
-* Minimum length of 8 characters
-* At least one uppercase letter
-* At least one numeric digit
+#Features
 
-##  Features
+*Validates minimum length requirement (8 or more characters)
+* Checks for:
 
-* Character-by-character validation using loops
-* Uses `Character.isUpperCase()` and `Character.isDigit()`
-* Provides specific feedback (e.g., "Missing digit", "Too short")
-* Retry mechanism using loop until valid password is entered
+  * At least one capital letter
+  * At least one number
+  * At least one special character
+* Gives detailed feedback about invalid passwords
+* Retry process until the valid password is created
 
-##  Concepts Used
+#Concepts Implemented
 
-* Loops (for, while)
-* Conditional statements
-* String manipulation
-* Basic input handling
+* Looping structure (for, while loops)
+* Conditional structures
+* String operations
+* Methods from Character class:
+  * Character.isUpperCase()
+  * Character.isDigit()
+* Input using Scanner class
 
-## ▶ How to Run
+#Running
 
-1. Compile the program:
+1. Compile:
    javac PasswordValidator.java
-2. Run the program:
+2. Execute:
    java PasswordValidator
 
-##  Output
+#Sample Output
 
-The program continuously prompts the user until a valid password is entered.
+Enter password: abc
+Password is too short (Minimum length: 8 characters)
+Password needs an upper-case letter
+Password needs a digit
+Password needs a special character
+Please try again.
+
+Enter password: Abc@1234
+Password is valid!
+
+#Key Features
+
+The main feature of this project is using a modular approach with a validating function (`isValid`), and giving the user informative feedback.
