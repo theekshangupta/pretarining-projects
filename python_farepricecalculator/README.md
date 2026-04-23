@@ -1,37 +1,59 @@
-# Python Project – FareCalc Travel Optimizer
+Python Project – FareCalc Travel Optimizer
 
-##  Description
+#Description
 
-This project calculates ride fare based on distance, vehicle type, and time of travel. It includes surge pricing during peak hours.
+This program is used to calculate fare for rides based on the distance travelled, type of vehicle, and timing of travel. The program contains the concept of surge pricing along with input validation.
 
-##  Objective
+#Objective
 
-To simulate a ride fare calculation system with dynamic pricing.
+To design a real-world fare system based on dynamic pricing concepts.
 
-##  Features
+#Features
 
-* Dictionary-based pricing for different vehicle types
-* Surge pricing (1.5x) during peak hours (5 PM – 8 PM)
-* Function-based implementation
-* Input validation for vehicle type
+* Dictionary-based pricing system
+* Types of vehicle include:
 
-##  Concepts Used
+  * Economy
+  * Premium
+  * SUV
+* Concept of surge pricing (multiplied by 1.5 times) for peak hours (5 PM to 8 PM)
+* Validations include:
 
-* Functions
+  * Positive value for distance
+  * Type of vehicle validation
+  * Timing validation (between 0 to 23 hours)
+
+#Concepts Used
+
+* Function
 * Dictionaries
-* Conditional logic
-* Error handling
+* Conditional statements
+* Try and exception
+* Input handling from user
 
-##  How to Run
+#Execution of Program
 
-1. Run the script:
-   python farecalc.py
-2. Enter required inputs:
+Execute program as follows:
+python farepricecalc.py
 
-   * Distance
-   * Vehicle type
-   * Hour
+Supply necessary inputs:
 
-##  Sample Output
+* Distance
+* Vehicle type
+* Timing (between 0 to 23)
 
-Displays a formatted ride receipt with total fare.
+#Sample Outputs
+
+Enter distance (km): 10
+Enter vehicle type (Economy/Premium/SUV): SUV
+Enter hour (0-23): 18
+
+-----Ride Receipt-----
+Distance: 10km
+Vehicle: SUV
+Hour: 18
+Total Price: ₹375.00
+
+# Key Feature
+
+Dynamic calculation using `calculate_fare` function and surge pricing concept.
