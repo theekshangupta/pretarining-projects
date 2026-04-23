@@ -1,45 +1,67 @@
-# SQL Project – Digital Library Audit System
+SQL Project – Digital Library Audit System
 
-##git  Description
+#Description
 
-This project models a digital library system to track book issuance and analyze borrowing data.
+In this SQL project, we have developed a database system for digital library which helps us keep track of issued books and issued record of students.
 
-## Objective
+#Objective
 
-* Identify overdue books
-* Analyze most popular book categories
-* Manage inactive student records
+* To check for the issued books and their returns
+* To find books that haven't been returned on time
+* To analyze the most popular book categories
+* To handle inactive student accounts
 
-## Database Structure
+#Database Schema
 
-### Tables:
+  Books
 
-* Books (book details)
-* Students (student information)
-* IssedBooks (book issue records)
+* book_id
+* title
+* author
+* published_date
+* pages
+* category
 
-## Features
+  Students
 
-* Relational schema using foreign keys
-* Overdue book detection (books not returned within 14 days)
-* Category-wise popularity analysis using GROUP BY
-* Cleanup of inactive users
+* stu_id
+* name
+* email (unique)
+* enrollment_date
+* last_active
 
-## Concepts Used
+     IssuedBooks
 
-* DDL (CREATE TABLE)
-* DML (INSERT, DELETE)
-* Joins
-* Aggregations (COUNT, GROUP BY)
-* Date functions
+* issued_id
+* book_id
+* student_id
+* issue_date
+* return_date
 
-##  How to Run
+#Features
 
-1. Open MySQL Workbench or VS Code (SQLTools)
-2. Run the `digital_library.sql` file
+* Relational Database with foreign key support
+* Detecting overdue books
+* Analyzing popularity of books per category (GROUP BY clause)
+* Dynamic tracking of student activity with `last_active` attribute
+* Deactivation of inactive student accounts (inactive for more than 3 years)
+* Update mechanism for updating last_active dynamically
 
-##  Output
+#Concepts Used
 
-* List of overdue books
-* Most borrowed categories
-* Updated student records after cleanup
+* DDL (CREATE and ALTER Statements)
+* DML (INSERT, UPDATE and DELETE Statements)
+* JOIN Operations
+* Aggregate Functions such as COUNT with GROUP BY Clause
+* Subquery Concept
+* Date Related Functions
+
+#How to Run
+
+1. Open your MySQL Workbench or VS code (SQL Tools Plugin)
+2. Execute the file:
+   digital_lib.sql
+
+#Key Highlight
+
+This project has added a few concepts over and above the provided problem statement like last_active etc.
