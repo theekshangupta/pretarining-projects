@@ -1,29 +1,26 @@
-Pre-Placement Training Use Case Projects
+Use Case Project for Pre-Placement Training
 
-This repository contains my individual practice assignments completed as part of pre-placement training.
+This repository has individual practices performed during pre-placement training.
 
-Each project is based on the assigned use cases and demonstrates practical implementation of core concepts in Java, Python, and SQL.
+The projects presented in here have been prepared based on the assigned use cases, which showcase practical application of the essential concepts using Java, Python and SQL.
 
-Projects Included
+Projects Covered
 
-Java – Password Validator (SafeLog)
-
-A console-based application that validates password strength based on defined security rules.
-
+Java – PasswordValidator (SafeLog)
+A console application designed to validate password strength using some defined rules.
 Python – FareCalc Travel Optimizer
+A program designed to calculate ride fare based on distance, time, and type of the vehicle used.
+SQL - Digital Library Audit System 
+A database system to keep record of books issues, detect books issued after due date, etc.
 
-A script that calculates ride fare based on distance, vehicle type, and time with surge pricing logic.
-SQL – Digital Library Audit System
+Technologies Utilized
 
-A database system to track book issues, identify overdue books, and analyze borrowing patterns.
+Java (Core Java, OOP principles)
+Python (functions, dictionary and error handling)
+MySQL (DDL, DML, joins and aggregations)
 
-Technologies Used
+Observation
 
-* Java (Core Java, OOP concepts)
-* Python (Functions, Dictionaries, Error Handling)
-* MySQL (DDL, DML, Joins, Aggregations)
-
-Notes
-
-* All implementations are original and created as part of training assignments.
-* Each project folder contains its own README with detailed explanation.
+All the projects presented here have been prepared by me and no external source has been used.
+All the folders have their own README file explaining the projects.
+Includes validation, logic and optimized database queries.
